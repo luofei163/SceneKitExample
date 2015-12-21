@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-
+#import <SceneKit/SceneKit.h>
 @interface ViewController ()
+
 
 @end
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,4 +26,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)initData {
+    // An empty scene
+//    SCNScene *scene = [SCNScene scene];
+//    self.scene = scene;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"model" ofType:@"obj"];
+    SCNView *myview = (SCNView *)self.view;
+    myview.scene = [SCNScene sceneNamed:@"model.obj"];
+    myview.allowsCameraControl = YES;
+    
+    myview.autoenablesDefaultLighting = YES;
+    myview.backgroundColor = [UIColor lightGrayColor];
+    
+}
 @end
